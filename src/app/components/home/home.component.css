@@ -1,0 +1,11 @@
+#homePage{
+    background-image: url("src/assets/img1.jpg");
+    padding-bottom: 505px;
+    
+}
+
+.emergency-alert {
+    font-family: "Open Sans",sans-serif;
+    background-color: #fe0;
+    color: #000;
+}

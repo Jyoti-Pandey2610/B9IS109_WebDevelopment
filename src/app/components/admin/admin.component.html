@@ -1,0 +1,49 @@
+<html>
+<body>
+<div class="container">
+  <h1 style="color: white; padding-top: 10%; font: caption; font-size: xx-large;">Patent Records</h1>
+
+  <div>
+    <button type="button" class="main-button-slider" (click)="addPatient()" >Add patient</button>
+  </div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Phone Number</th>
+				<th>City</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let patient of patients; let i = index" [attr.data-index]="i">
+        <td>{{ i+1 }}</td>
+        <td *ngIf="patient.isEditable"><input type="text" [(ngModel)]="patient.name" name="name"></td>
+        <td *ngIf="patient.isEditable"><input type="number" [(ngModel)]="patient.number" name="number"></td>
+        <td *ngIf="patient.isEditable"><input type="text" [(ngModel)]="patient.city" name="city"></td>
+          
+        <td *ngIf="!patient.isEditable">{{ patient.name }}</td>
+        <td *ngIf="!patient.isEditable">{{ patient.number }}</td>
+        <td *ngIf="!patient.isEditable">{{ patient.city }}</td>
+        <td>
+          <button mat-icon-button *ngIf="!patient.isEditable" (click)="editPatient(patient)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button *ngIf="patient.isEditable" (click)="savePatient(patient)">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button *ngIf="!patient.isEditable" (click)="deletePatient(patient)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>  
+      </tr>
+		</tbody>
+	</table>
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
